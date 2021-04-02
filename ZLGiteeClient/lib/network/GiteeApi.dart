@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:http/src/utils.dart';
 import 'package:ZLGiteeClient/network/GiteeClient.dart';
-import 'package:ZLGiteeClient/Model/GiteeUser.Dart';
+import 'package:ZLGiteeClient/model/GiteeUser.dart';
 
 enum GiteeApiEnum {
   UserInfo,
@@ -52,12 +53,17 @@ class GiteeApi extends Object {
       return;
     }
 
+    var bodyStr = Encoding.getByName("utf-8")?.decode(response.bodyBytes);
+    if (bodyStr == null) {
+      result = false;
+      responseBlock(result, data, "decode error");
+    }
     result = true;
 
     switch (api) {
       case GiteeApiEnum.UserInfo:
         {
-          var map = JsonDecoder().convert(response.body);
+          var map = JsonDecoder().convert(bodyStr);
           data = GiteeUser.fromJson(map);
         }
         break;

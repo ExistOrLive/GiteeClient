@@ -61,19 +61,24 @@ class UserHeaderWidget extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+      margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
       height: 200,
       color: Theme.of(context).backgroundColor,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ClipOval(
-              child: FadeInImage.assetNetwork(
+          ClipOval(child: () {
+            if (userInfo.avatarUrl != null) {
+              return FadeInImage.assetNetwork(
                   placeholder: "assets/images/default_avatar.png",
                   fit: BoxFit.contain,
                   image: userInfo?.avatarUrl ?? "",
-                  width: 50)),
+                  width: 50);
+            } else {
+              return Image.asset("assets/images/default_avatar.png", width: 50);
+            }
+          }()),
           Text(
             "${userInfo?.login ?? ""}(${userInfo?.name ?? ""})",
             style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 20),
@@ -109,15 +114,15 @@ class UserItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).backgroundColor,
-      margin: EdgeInsets.only(top: 10),
+      margin: EdgeInsets.only(top: 5),
       child: Column(
         children: [
           _itemRow("公司", userInfo?.company ?? ""),
           _itemRow("职业", userInfo?.profession ?? ""),
           _itemRow("邮箱", userInfo?.email ?? ""),
-          _itemRow("博客", userInfo?.company ?? ""),
+          _itemRow("博客", userInfo?.blog ?? ""),
           _itemRow("微信", userInfo?.wechat ?? ""),
-          _itemRow("qq", userInfo?.qq ?? ""),
+          _itemRow("QQ", userInfo?.qq ?? ""),
           _itemRow("微博", userInfo?.weibo ?? ""),
           _itemRow("领英", userInfo?.linkedin ?? ""),
         ],

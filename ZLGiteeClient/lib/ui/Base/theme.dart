@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // Colors
+const kAppBarBackgroundLightColor = Color(0xFFFBF9FB);
+const kAppBarBackgroundDarkColor = Color(0xFF1E2022);
 const kPrimaryColor = Color(0xFFFF97B3);
 const kSecondaryLightColor = Color(0xFFE4E9F2);
 const kSecondaryDarkColor = Color(0xFF404040);
@@ -64,7 +66,7 @@ ThemeData darkThemeData(BuildContext context) {
     primaryColor: kPrimaryColor,
     accentColor: kAccentDarkColor,
     scaffoldBackgroundColor: kScaffoldBackgroundDarkColor,
-    appBarTheme: appBarTheme,
+    appBarTheme: appBarDarkTheme,
     colorScheme: ColorScheme.light(
       secondary: kSecondaryDarkColor,
       surface: kSurfaceDarkColor,
@@ -82,4 +84,7 @@ ThemeData darkThemeData(BuildContext context) {
   );
 }
 
-AppBarTheme appBarTheme = AppBarTheme(color: Colors.transparent, elevation: 0);
+AppBarTheme appBarTheme =
+    AppBarTheme(backgroundColor: kAppBarBackgroundLightColor, elevation: 0);
+AppBarTheme appBarDarkTheme =
+    AppBarTheme(backgroundColor: kAppBarBackgroundDarkColor, elevation: 0);
