@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 // Colors
 const kAppBarBackgroundLightColor = Color(0xFFFBF9FB);
 const kAppBarBackgroundDarkColor = Color(0xFF1E2022);
-const kPrimaryColor = Color(0xFFFF97B3);
+const kPrimaryColor = Color(0xFFFBF9FB);
+const kPrimaryDarkColor = Color(0xFF1E2022);
 const kSecondaryLightColor = Color(0xFFE4E9F2);
 const kSecondaryDarkColor = Color(0xFF404040);
 const kAccentLightColor = Color(0xFFB3BFD7);
@@ -63,7 +64,7 @@ ThemeData themeData(BuildContext context) {
 // Dark Them
 ThemeData darkThemeData(BuildContext context) {
   return ThemeData.dark().copyWith(
-    primaryColor: kPrimaryColor,
+    primaryColor: kPrimaryDarkColor,
     accentColor: kAccentDarkColor,
     scaffoldBackgroundColor: kScaffoldBackgroundDarkColor,
     appBarTheme: appBarDarkTheme,

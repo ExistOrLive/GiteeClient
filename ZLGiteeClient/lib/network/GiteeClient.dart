@@ -12,7 +12,7 @@ class GiteeClient extends Object {
   static final GiteeClient sharedClient = GiteeClient();
 
   void sendRequest(GiteeApiEnum api,
-      [Map<String, dynamic> params, GiteeResponse responseBlock]) async {
+      {Map<String, dynamic> params, GiteeResponse responseBlock}) async {
     var request = GiteeApi.requestForApi(api, params);
     http.Response uriResponse =
         await http.Response.fromStream(await client.send(request));

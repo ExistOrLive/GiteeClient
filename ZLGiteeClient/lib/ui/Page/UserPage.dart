@@ -16,11 +16,7 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(userInfo?.login ?? ""),
-          foregroundColor: Colors.red),
+      appBar: AppBar(title: Text(userInfo?.login ?? "")),
       body: ListView(
         children: [UserHeaderWidget(userInfo), UserItemWidget(userInfo)],
       ),
@@ -38,8 +34,8 @@ class _UserPageState extends State<UserPage> {
 
   void _loadData() {
     GiteeClient.sharedClient
-        .sendRequest(GiteeApiEnum.UserInfo, {"login": "existorlive"},
-            (result, data, errorMessage) {
+        .sendRequest(GiteeApiEnum.UserInfo, params: {"login": "existorlive"},
+            responseBlock: (result, data, errorMessage) {
       if (result) {
         if (data is GiteeUser) {
           setState(() {

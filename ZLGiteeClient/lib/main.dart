@@ -1,4 +1,4 @@
-import 'package:ZLGiteeClient/UI/Page/UserPage.dart';
+import 'package:ZLGiteeClient/ui/Page/search/SearchPage.dart';
 import 'package:flutter/material.dart';
 import 'UI/Base/theme.dart';
 
@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'GiteeClient',
       theme: themeData(context),
       darkTheme: darkThemeData(context),
-      home: new UserPage(),
+      home: new SearchPage(),
     );
   }
 }
